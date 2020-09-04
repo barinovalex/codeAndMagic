@@ -28,6 +28,7 @@ var getMaxElement = function (arr) {
   return maxElement;
 }
 var renderStatistics = function (ctx, players, times) {
+  var maxScore = getMaxElement(times);
   renderCloud(ctx, 'rgba(0, 0, 0, 0.7)', CLOUD_X + GAP, CLOUD_Y + GAP);
   renderCloud(ctx, '#fff', CLOUD_X, CLOUD_Y);
   ctx.fillStyle = '#000';
@@ -38,7 +39,6 @@ var renderStatistics = function (ctx, players, times) {
 
   for (var i = 0; i < players.length; i++) {
     var playerScore = Math.ceil(times[i]);
-    var maxScore = getMaxElement(times);
     var columnHeight = (COLUMN_HEIGHT * playerScore) / maxScore;
     var nameY = CLOUD_Y + CLOUD_HEIGHT - FONT_SIZE - OUTER_GAP;
     var columnY = CLOUD_Y + CLOUD_HEIGHT - FONT_SIZE - OUTER_GAP - TEXT_GAP - columnHeight - FONT_SIZE - TEXT_GAP;
