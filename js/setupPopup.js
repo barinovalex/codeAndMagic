@@ -6,6 +6,8 @@
 
 
   var openPopup = function () {
+    setupOverlay.style.left = '';
+    setupOverlay.style.top = '';
     setupOverlay.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscKeydown);
   };
