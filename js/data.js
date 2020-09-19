@@ -11,11 +11,11 @@
     var wizards = [];
     for (var i = 0; i < count; i++) {
       wizards.push(
-        {
-          name: window.util.getRandomArrElement(names) + ' ' + window.util.getRandomArrElement(surnames),
-          coatColor: window.util.getRandomArrElement(coatColors),
-          eyesColor: window.util.getRandomArrElement(eyesColors)
-        }
+          {
+            name: window.util.getRandomArrElement(names) + ' ' + window.util.getRandomArrElement(surnames),
+            coatColor: window.util.getRandomArrElement(coatColors),
+            eyesColor: window.util.getRandomArrElement(eyesColors)
+          }
       );
     }
     return wizards;
