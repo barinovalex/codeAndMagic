@@ -4,8 +4,11 @@
   var setupOverlay = document.querySelector('.setup');
   var setupClose = setupOverlay.querySelector('.setup-close');
 
-
   var openPopup = function () {
+
+    if (!window.backend.isLoad) {
+      window.similarWizards.load();
+    }
     setupOverlay.style.left = '';
     setupOverlay.style.top = '';
     setupOverlay.classList.remove('hidden');

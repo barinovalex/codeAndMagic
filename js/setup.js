@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+  var setupSubmit = document.querySelector('.setup-submit');
   var setupPlayer = document.querySelector('.setup-player');
   var playerCoat = setupPlayer.querySelector('.wizard-coat');
   var playerEyes = setupPlayer.querySelector('.wizard-eyes');
@@ -21,6 +22,21 @@
     playerFireball.style.backgroundColor = window.data.fireballColors[k];
     playerFireball.querySelector('input[name = fireball-color]').value = window.data.fireballColors[k];
     k++;
+  });
+  var onLoad = function (response) {
+    document.querySelector('.setup').classList.add('hidden');
+  };
+  var onError = function (message) {
+    var elementErorr = document.createElement('div');
+    elementErorr.textContent = message;
+    elementErorr.style.textAlign = 'center';
+    document.querySelector('.setup-footer').insertBefore(elementErorr, setupSubmit);
+  };
+
+  var form = document.querySelector('.setup-wizard-form');
+  form.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    window.backend.save(new FormData(form), onLoad, onError);
   });
 })();
 
