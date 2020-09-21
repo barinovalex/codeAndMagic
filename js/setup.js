@@ -9,7 +9,7 @@
   var playerCoatColor = '';
   var playerEyesColor = '';
 
-  var updateWizards = function () {
+  var updateWizards = window.debounce(function () {
     var wizards = window.similarWizards.wizards();
 
     var getRank = function (wizard) {
@@ -41,21 +41,19 @@
       return compare;
     });
     window.similarWizards.renderWizards(wizards);
-  };
+  });
 
   playerCoat.addEventListener('click', function () {
     playerCoatColor = window.util.getRandomArrElement(window.data.coatColors);
     playerCoat.style.fill = playerCoatColor;
     setupPlayer.querySelector('input[name = coat-color]').value = playerCoatColor;
-    window.debounce(updateWizards);
+    updateWizards();
   });
   playerEyes.addEventListener('click', function () {
     playerEyesColor = window.util.getRandomArrElement(window.data.eyesColors);
     playerEyes.style.fill = playerEyesColor;
     setupPlayer.querySelector('input[name = eyes-color]').value = playerEyesColor;
-    window.debounce(function () {
-      updateWizards();
-    });
+    updateWizards();
   });
   var k = 0;
   playerFireball.addEventListener('click', function () {
