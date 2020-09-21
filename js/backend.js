@@ -5,6 +5,10 @@
   var URL_SAVE = 'https://javascript.pages.academy/code-and-magick';
   var isLoad = false;
 
+  var getIsLoad = function () {
+    return isLoad;
+  };
+
   var load = function (onLoad, onError) {
     var xhr = new XMLHttpRequest();
     xhr.responseType = 'json';
@@ -58,6 +62,6 @@
   window.backend = {
     load: load,
     save: save,
-    isLoad: isLoad
+    isLoad: getIsLoad
   };
 })();
