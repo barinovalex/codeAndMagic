@@ -6,7 +6,7 @@
 
   var openPopup = function () {
 
-    if (!window.backend.isLoad) {
+    if (!window.backend.isLoad()) {
       window.similarWizards.load();
     }
     setupOverlay.style.left = '';
